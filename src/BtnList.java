@@ -47,8 +47,8 @@ public class BtnList extends JButton {
             numFiveBtn, num6Btn, numSevenBtn, numEightBtn, numNineBtn, hexaDecimalABtn, hexaDecimalBBtn,
             hexaDecimalCBtn, hexaDecimalDBtn, hexaDecimalEBtn, hexaDecimalFBtn};
 
-    private final JButton[] operatorButton = {sumBtn,subtractionBtn,multiplyBtn,divisionBtn,equaltoBtn};
-    private final JButton[] bitwiseButton = {logicOrBtn,logicAndBtn,logicNotBtn,logicXor};
+    private final JButton[] operatorButton = {sumBtn, subtractionBtn, multiplyBtn, divisionBtn, equaltoBtn};
+    private final JButton[] bitwiseButton = {logicOrBtn, logicAndBtn, logicNotBtn, logicXor};
 
     public JButton[] getHexaDecimalNumButton() {
         return hexaDecimalNumButton;
@@ -62,6 +62,12 @@ public class BtnList extends JButton {
         return decimalNumButton;
     }
 
+    public BtnList(){
+        for(JButton button:mainButton){
+            String txt = button.getText();
+            button.setActionCommand(txt);
+        }
+    }
 
     public JButton[] getButton() {
         return mainButton;
@@ -70,5 +76,7 @@ public class BtnList extends JButton {
     public JRadioButton[] getRadioButton() {
         return radioButton;
     }
+
+
 
 }

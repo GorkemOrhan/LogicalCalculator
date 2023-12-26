@@ -2,6 +2,6 @@ import java.awt.*;
 
 public class Main {
     public static void main(String[] args) {
-       Frame calculatorFrame = new CalculatorFrame();
+        Frame calculatorFrame = new CalculatorFrame();
     }
 }
