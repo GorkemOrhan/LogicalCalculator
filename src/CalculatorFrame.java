@@ -14,7 +14,7 @@ public class CalculatorFrame extends JFrame {
     JRadioButton decimalRadio = radioButtonList[1];
     JRadioButton binaryRadio = radioButtonList[2];
 
-    CalculatorEnableDisable calEnabDisab = new CalculatorEnableDisable();
+    CalculatorEnableDisable calculatorEnableDisable = new CalculatorEnableDisable();
 
     JLabel result = new JLabel("",SwingConstants.CENTER);
 
@@ -69,20 +69,23 @@ public class CalculatorFrame extends JFrame {
 
     public class ButtonHandler implements ActionListener {
 
+        //todo: chatgpt'de en sonki yazışmaya bak. ona göre switch caseler ile
+        // ekrana yazdırtma fonksiyonuna devam et
+
         @Override
         public void actionPerformed(ActionEvent e) {
             if (e.getSource() == decimalRadio) {
                 hexaDecimalRadio.setSelected(false);
                 binaryRadio.setSelected(false);
-                calEnabDisab.enableDecimal(buttonList);
+                calculatorEnableDisable.enableDecimal(buttonList);
             } else if (e.getSource() == hexaDecimalRadio) {
                 decimalRadio.setSelected(false);
                 binaryRadio.setSelected(false);
-                calEnabDisab.enableHexadecimal(buttonList);
+                calculatorEnableDisable.enableHexadecimal(buttonList);
             } else if (e.getSource() == binaryRadio) {
                 decimalRadio.setSelected(false);
                 hexaDecimalRadio.setSelected(false);
-                calEnabDisab.enableBinary(buttonList);
+                calculatorEnableDisable.enableBinary(buttonList);
             }
             btnPanel.revalidate();
             btnPanel.repaint();

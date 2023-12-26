@@ -1,5 +1,4 @@
 import javax.swing.*;
-import java.util.Objects;
 
 public class CalculatorEnableDisable {
 
@@ -11,7 +10,7 @@ public class CalculatorEnableDisable {
 
     public void enableHexadecimal(JButton[] buttons) {
         for (JButton button : buttons) {
-            button.setEnabled(true); // Tüm butonları etkinleştir
+            button.setEnabled(true);
         }
     }
 
