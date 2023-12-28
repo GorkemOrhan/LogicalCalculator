@@ -158,4 +158,18 @@ public class CalculatorOperations {
         }
     }
 
+    public String rshOperator(String operand1, String bitNumber, JRadioButton currentButton){
+        int bit = Integer.parseInt(bitNumber);
+        if (Objects.equals(currentButton.getText(), "Hexadecimal")) {
+            int num1 = Integer.parseInt(operand1, 16);
+            return Integer.toHexString(num1 >> bit).toUpperCase();
+        } else if (Objects.equals(currentButton.getText(), "Decimal")) {
+            int num1 = Integer.parseInt(operand1);
+            return Integer.toString(num1 >> bit);
+        } else {
+            int num1 = Integer.parseInt(operand1, 2);
+            return Integer.toBinaryString(num1 >> bit);
+        }
+    }
+
 }

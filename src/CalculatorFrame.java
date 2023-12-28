@@ -17,7 +17,6 @@ public class CalculatorFrame extends JFrame {
     String currentOperator;
     String operand1;
     String operand2;
-    String currentOperand = operand1;
     CalculatorOperations calculatorOperations = new CalculatorOperations();
 
     CalculatorEnableDisable calculatorEnableDisable = new CalculatorEnableDisable();
@@ -138,95 +137,100 @@ public class CalculatorFrame extends JFrame {
                     break;
                 case "<<":
                     currentOperator = "<<";
+                    operand1 = result.getText();
                     result.setText(result.getText() + " Lsh ");
                     break;
                 case ">>":
                     currentOperator = ">>";
+                    operand1 = result.getText();
                     result.setText(result.getText() + " Rsh ");
                     break;
                 case "+":
                     currentOperator = "+";
                     operand1 = result.getText();
-                    currentOperand = operand2;
                     result.setText(result.getText() + " + ");
                     break;
                 case "-":
                     currentOperator = "-";
                     operand1 = result.getText();
-                    currentOperand = operand2;
                     result.setText(result.getText() + " - ");
                     break;
                 case "*":
                     currentOperator = "*";
                     operand1 = result.getText();
-                    currentOperand = operand2;
                     result.setText(result.getText() + " * ");
                     break;
                 case "/":
                     currentOperator = "/";
                     operand1 = result.getText();
-                    currentOperand = operand2;
                     result.setText(result.getText() + " / ");
                     break;
                 case "AND":
                     currentOperator = "AND";
                     operand1 = result.getText();
-                    currentOperand = operand2;
                     result.setText(result.getText() + " AND ");
                     break;
                 case "OR":
                     currentOperator = "OR";
                     operand1 = result.getText();
-                    currentOperand = operand2;
                     result.setText(result.getText() + " OR ");
                     break;
                 case "XOR":
                     currentOperator = "XOR";
                     operand1 = result.getText();
-                    currentOperand = operand2;
                     result.setText(result.getText() + " XOR ");
                     break;
                 case "NOT":
                     currentOperator = "NOT";
-                    operand1 = result.getText();
+                    operand1 = result.getText();;
                     result.setText("NOT(" + operand1 + ")");
                     break;
                 case "=":
                     String inputText = result.getText();
-                    int operatorIndex = inputText.lastIndexOf(" " + currentOperator + " ");
-                    int operand2StartIndex = operatorIndex + currentOperator.length() + 2;
-                    if (currentOperator.equals("NOT")) {
-                        operand1 = result.getText().substring("NOT(".length(), result.getText().length() - 1);
+                    if (currentOperator.equals("<<")) {
+                        int operatorIndex = inputText.lastIndexOf(" Lsh ");
+                        operand2 = inputText.substring(operatorIndex + " Lsh ".length());
+                        result.setText(calculatorOperations.lshOperator(operand1, operand2, currentRadioButton));
+                    }
+                    else if (currentOperator.equals(">>")){
+                        int operatorIndex = inputText.lastIndexOf(" Rsh ");
+                        operand2 = inputText.substring(operatorIndex + " Rsh ".length());
+                        result.setText(calculatorOperations.rshOperator(operand1, operand2, currentRadioButton));
+                    }
+                    else if (currentOperator.equals("NOT")) {
+                        String notResult = calculatorOperations.notOperator(operand1, currentRadioButton);
                         result.setText(calculatorOperations.notOperator(operand1, currentRadioButton));
-                    } else {
-                        operand2 = inputText.substring(operand2StartIndex);
                     }
-
-                    if(currentOperator.equals("<<")){
-                        calculatorOperations.lshOperator(operand1,operand2,currentRadioButton);
-                        break;
-                    }
-
-                    if(result.getText().contains("+")){
-                       result.setText(calculatorOperations.sumOperator(operand1,operand2,currentRadioButton));
-                    }
-                    else if(result.getText().contains("-")){
-                        result.setText(calculatorOperations.subtractionOperator(operand1,operand2,currentRadioButton));
-                    }
-                    else if(result.getText().contains("*")){
-                        result.setText(calculatorOperations.multiplyOperator(operand1,operand2,currentRadioButton));
-                    }
-                    else if(result.getText().contains("/")){
-                        result.setText(calculatorOperations.divisionOperator(operand1,operand2,currentRadioButton));
-                    }
-                    else if (result.getText().contains("AND")){
-                        result.setText(calculatorOperations.andOperator(operand1,operand2,currentRadioButton));
-                    }
-                    else if(result.getText().contains("OR")){
-                        result.setText(calculatorOperations.orOperator(operand1,operand2,currentRadioButton));
-                    }
-                    else if(result.getText().contains("XOR")){
-                        result.setText(calculatorOperations.xorOperator(operand1,operand2,currentRadioButton));
+                    else{
+                        int operatorIndex = inputText.lastIndexOf(" "+currentOperator+" ");
+                        int operator2StartIndex = operatorIndex+currentOperator.length()+2;
+                        if(operatorIndex!=-1){
+                            operand2 = inputText.substring(operator2StartIndex);
+                            if(currentOperator.equals("<<")){
+                                result.setText(calculatorOperations.lshOperator(operand1,operand2,currentRadioButton));
+                            }
+                            else if(result.getText().contains("+")){
+                                result.setText(calculatorOperations.sumOperator(operand1,operand2,currentRadioButton));
+                            }
+                            else if(result.getText().contains("-")){
+                                result.setText(calculatorOperations.subtractionOperator(operand1,operand2,currentRadioButton));
+                            }
+                            else if(result.getText().contains("*")){
+                                result.setText(calculatorOperations.multiplyOperator(operand1,operand2,currentRadioButton));
+                            }
+                            else if(result.getText().contains("/")){
+                                result.setText(calculatorOperations.divisionOperator(operand1,operand2,currentRadioButton));
+                            }
+                            else if (result.getText().contains("AND")){
+                                result.setText(calculatorOperations.andOperator(operand1,operand2,currentRadioButton));
+                            }
+                            else if(result.getText().contains("OR")){
+                                result.setText(calculatorOperations.orOperator(operand1,operand2,currentRadioButton));
+                            }
+                            else if(result.getText().contains("XOR")){
+                                result.setText(calculatorOperations.xorOperator(operand1,operand2,currentRadioButton));
+                            }
+                        }
                     }
                     break;
                 case "CLEAR":
