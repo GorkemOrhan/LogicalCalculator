@@ -40,28 +40,6 @@ public class BtnList extends JButton {
             numFourBtn, numFiveBtn, num6Btn, multiplyBtn, hexaDecimalEBtn, numOneBtn, numTwoBtn, numThreeBtn, divisionBtn, hexaDecimalFBtn,
             numZeroBtn, equaltoBtn};
 
-    private final JButton[] binaryNumButton = {numOneBtn, numTwoBtn};
-    private final JButton[] decimalNumButton = {numOneBtn, numTwoBtn, numThreeBtn, numFourBtn,
-            numFiveBtn, num6Btn, numSevenBtn, numEightBtn, numNineBtn};
-    private final JButton[] hexaDecimalNumButton = {numOneBtn, numTwoBtn, numThreeBtn, numFourBtn,
-            numFiveBtn, num6Btn, numSevenBtn, numEightBtn, numNineBtn, hexaDecimalABtn, hexaDecimalBBtn,
-            hexaDecimalCBtn, hexaDecimalDBtn, hexaDecimalEBtn, hexaDecimalFBtn};
-
-    private final JButton[] operatorButton = {sumBtn, subtractionBtn, multiplyBtn, divisionBtn, equaltoBtn};
-    private final JButton[] bitwiseButton = {logicOrBtn, logicAndBtn, logicNotBtn, logicXor};
-
-    public JButton[] getHexaDecimalNumButton() {
-        return hexaDecimalNumButton;
-    }
-
-    public JButton[] getBinaryNumButton() {
-        return binaryNumButton;
-    }
-
-    public JButton[] getDecimalNumButton() {
-        return decimalNumButton;
-    }
-
     public BtnList(){
         for(JButton button:mainButton){
             String txt = button.getText();

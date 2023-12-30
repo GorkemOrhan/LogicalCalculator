@@ -18,7 +18,6 @@ public class CalculatorFrame extends JFrame {
     String operand1;
     String operand2;
     CalculatorOperations calculatorOperations = new CalculatorOperations();
-
     CalculatorEnableDisable calculatorEnableDisable = new CalculatorEnableDisable();
 
     JLabel result = new JLabel("", SwingConstants.CENTER);
@@ -78,14 +77,10 @@ public class CalculatorFrame extends JFrame {
 
     public class ButtonHandler implements ActionListener {
 
-        //todo: chatgpt'de en sonki yazışmaya bak. ona göre switch caseler ile
-        // ekrana yazdırtma fonksiyonuna devam et
-
         @Override
         public void actionPerformed(ActionEvent e) {
 
             String command = e.getActionCommand();
-
             switch (command) {
                 case "1":
                     result.setText(result.getText() + "1");
